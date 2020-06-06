@@ -7,5 +7,6 @@ killall pulseaudio;
 rm -r ~/.pulse*;
 ubuntu-support-status;
 sudo usermod -aG `cat /etc/group | grep -e '^pulse:' -e '^audio:' -e '^pulse-access:' -e '^pulse-rt:' -e '^video:' | awk -F: '{print $1}' | tr '\n' ',' | sed 's:,$::g'` `whoami`;
+sudo pulseaudio -k;
 sudo alsa force-reload;
 #alsactl restore;
